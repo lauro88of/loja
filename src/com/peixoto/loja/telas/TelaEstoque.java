@@ -66,6 +66,4 @@ public class TelaEstoque  implements Tela {
         produto.setEstoque(Integer.parseInt(this.entradaEstoque.nextLine()));
         return produto;
     }
-
-
 }
