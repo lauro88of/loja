@@ -67,4 +67,13 @@ public class Produto {
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"codigo\":" + (codigo == null ? "null" : "\"" + codigo + "\"") + ", " +
+                "\"nome\":" + (nome == null ? "null" : "\"" + nome + "\"") +
+                "}";
+    }
 }

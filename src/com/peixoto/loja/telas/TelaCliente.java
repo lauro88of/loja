@@ -31,8 +31,8 @@ public class TelaCliente implements Tela{
             System.out.println("2 - Listar Cliente");
             opcao = Integer.parseInt(this.entradaCliente.nextLine());
             if(opcao == 1) {
-                Cliente produto = entrarClienteNaTela();
-                this.clienteRepositorio.salvar(produto);
+                Cliente cliente = entrarClienteNaTela();
+                this.clienteRepositorio.salvar(cliente);
             }
             if(opcao == 2) {
                 List<Cliente> produtos = this.clienteRepositorio.buscarTodos();
