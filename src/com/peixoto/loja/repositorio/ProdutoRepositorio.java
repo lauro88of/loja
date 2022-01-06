@@ -10,13 +10,13 @@ public class ProdutoRepositorio implements Repositorio<Produto, Long> {
 
     private static List<Produto> listaProdutos = new ArrayList<>();
 
-
     public ProdutoRepositorio() {
         if(listaProdutos.isEmpty()) {
             listaProdutos.add(new Produto(1L,"SH SEDA HIDRATACAO N-IO", "SHAMPOO DE HIDRATACAO",50.50,10 ));
             listaProdutos.add(new Produto(2L,"CELULAR", "CELULAR",9.0000,100 ));
             listaProdutos.add(new Produto(3L,"CARREGADOR IPHONE", "CARREGADOR",1500.0,10 ));
-            listaProdutos.add(new Produto(3L,"CARREGADOR LG", "CARREGADOR",1500.0,10 ));
+            listaProdutos.add(new Produto(4L,"CARREGADOR LG", "CARREGADOR",1500.0,10 ));
+            listaProdutos.add(new Produto(5L,"TV", "TV",1500.0,0 ));
         }
     }
 
@@ -39,5 +39,24 @@ public class ProdutoRepositorio implements Repositorio<Produto, Long> {
         return produtoDoEncontrado;
     }
 
+    public List<Produto> buscarProdutosComEstoque(){
+        List<Produto> produtosComEstoque = new ArrayList<>();
+        for(Produto produtoNaLista : listaProdutos) {
+            if(produtoNaLista.getEstoque()>0) {
+                produtosComEstoque.add(produtoNaLista);
+            }
+        }
+        return produtosComEstoque;
+    }
+
+    public Produto buscarProdutoPorNome(String nome){
+        Produto produtoDoEncontrado = null;
+        for(Produto produtoNaLista : listaProdutos) {
+            if(produtoNaLista.getNome().equalsIgnoreCase(nome)) {
+                produtoDoEncontrado = produtoNaLista;
+            }
+        }
+        return produtoDoEncontrado;
+    }
 
 }

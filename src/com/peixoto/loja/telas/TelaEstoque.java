@@ -3,6 +3,7 @@ package com.peixoto.loja.telas;
 import com.peixoto.loja.domain.estoque.Produto;
 import com.peixoto.loja.repositorio.ProdutoRepositorio;
 import com.peixoto.loja.repositorio.Repositorio;
+import com.peixoto.loja.servicos.ProdutoService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,9 +12,11 @@ public class TelaEstoque  implements Tela {
 
     final private Scanner entradaEstoque;
     private Repositorio<Produto, Long> produtoRepositorio;
+    private ProdutoService produtoService;
     public TelaEstoque(Scanner entradaEstoque) {
         this.entradaEstoque = entradaEstoque;
         this.produtoRepositorio = new ProdutoRepositorio();
+        this.produtoService = new ProdutoService();
     }
     @Override
     public void abrirTela() {
@@ -32,7 +35,7 @@ public class TelaEstoque  implements Tela {
             }
             if(opcao == 2) {
                 List<Produto> produtos = this.produtoRepositorio.buscarTodos();
-                mostrarProdutos(produtos);
+                produtoService.mostrarProdutos(produtos);
             }
             if (opcao == 3) {
                 System.out.println("Informe o código do produto: ");
@@ -46,11 +49,7 @@ public class TelaEstoque  implements Tela {
 
     }
 
-    private void mostrarProdutos(List<Produto> produtos) {
-        for(Produto produto : produtos) {
-            System.out.println("Nome: " + produto.getNome() + " | Valor: " + produto.getValor() + " | Quantidade estoque: " + produto.getEstoque() );
-        }
-    }
+
 
     private Produto entrarProdutoNaTela() {
         Produto produto = new Produto();
@@ -66,6 +65,4 @@ public class TelaEstoque  implements Tela {
         produto.setEstoque(Integer.parseInt(this.entradaEstoque.nextLine()));
         return produto;
     }
-
-
 }

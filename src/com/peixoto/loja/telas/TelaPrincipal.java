@@ -15,6 +15,7 @@ public class TelaPrincipal implements Tela {
             System.out.println("0 - Fechar Sistema");
             System.out.println("1 - Abrir Tela do Estoque");
             System.out.println("2 - Gerenciador de Pedidos");
+            System.out.println("3 - Gerenciador de Clientes");
             opcao = Integer.parseInt(entrada.nextLine());
             if(opcao == 1) {
                 tela = new TelaEstoque(entrada);
@@ -22,6 +23,9 @@ public class TelaPrincipal implements Tela {
             }
             if(opcao == 2) {
                 tela = new TelaPedido(entrada);
+                tela.abrirTela();
+            }if(opcao == 3) {
+                tela = new TelaCliente(entrada);
                 tela.abrirTela();
             }
         }while (opcao != 0);

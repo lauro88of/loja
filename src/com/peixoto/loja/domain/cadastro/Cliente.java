@@ -1,5 +1,6 @@
 package com.peixoto.loja.domain.cadastro;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Cliente {
@@ -7,6 +8,7 @@ public class Cliente {
     private String cpf;
     private String nome;
     private String endereco;
+    private LocalDate dataExpiracaoCadastro;
 
     public Cliente() {
     }
@@ -47,6 +49,14 @@ public class Cliente {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public LocalDate getDataExpiracaoCadastro() {
+        return dataExpiracaoCadastro;
+    }
+
+    public void setDataExpiracaoCadastro(LocalDate dataExpiracaoCadastro) {
+        this.dataExpiracaoCadastro = dataExpiracaoCadastro;
     }
 
     @Override
